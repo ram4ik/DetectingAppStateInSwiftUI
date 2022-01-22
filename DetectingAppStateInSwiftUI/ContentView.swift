@@ -8,14 +8,21 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @ObservedObject var stateManager: AppStateManager
+    
     var body: some View {
         Text("Hello, world!")
+            .foregroundColor(.white)
+            .font(.system(size: 80))
             .padding()
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+            .background(
+                RoundedRectangle(cornerRadius: 20)
+                    .fill(Color.orange)
+                    .frame(width: 400, height: 400)
+                    .shadow(radius: 10)
+            )
+            .padding()
+            .blur(radius: stateManager.showBlur ? 100 : 0)
     }
 }
